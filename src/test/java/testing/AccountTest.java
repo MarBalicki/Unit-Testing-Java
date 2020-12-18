@@ -61,4 +61,19 @@ class AccountTest {
         });
     }
 
+    @Test
+    void invalidEmailShouldThrowException() {
+        Account account = new Account();
+        assertThrows(IllegalArgumentException.class, ()-> account.setEmail("wrongEmail"));
+        assertThrows(IllegalArgumentException.class, ()-> account.setEmail("wrong@Email"));
+        assertThrows(IllegalArgumentException.class, ()-> account.setEmail("wrongEmail.com"));
+    }
+
+    @Test
+    void validEmailShouldBeSet() {
+        Account account = new Account();
+        account.setEmail("kontakt@gmail.com");
+        assertThat(account.getEmail(), is("kontakt@gmail.com"));
+    }
+
 }

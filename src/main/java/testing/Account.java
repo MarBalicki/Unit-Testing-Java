@@ -4,6 +4,7 @@ public class Account {
 
     private boolean active;
     private Address defaultDeliveryAddress;
+    private String email;
 
     public Account() {
         this.active = false;
@@ -32,5 +33,17 @@ public class Account {
 
     public void setDefaultDeliveryAddress(Address defaultDeliveryAddress) {
         this.defaultDeliveryAddress = defaultDeliveryAddress;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        if (email.matches("^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}$")) {
+            this.email = email;
+        } else {
+            throw new IllegalArgumentException("Wrong email format");
+        }
     }
 }
