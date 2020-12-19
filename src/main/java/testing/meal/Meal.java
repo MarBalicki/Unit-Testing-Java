@@ -1,4 +1,4 @@
-package testing;
+package testing.meal;
 
 import java.util.Objects;
 
@@ -65,7 +65,7 @@ public class Meal {
 
     @Override
     public String toString() {
-        return "testing.Meal{" +
+        return "testing.meal.Meal{" +
                 "price=" + price +
                 ", name='" + name + '\'' +
                 '}';

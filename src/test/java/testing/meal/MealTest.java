@@ -1,4 +1,4 @@
-package testing;
+package testing.meal;
 
 import org.junit.jupiter.api.DynamicTest;
 import org.junit.jupiter.api.Tag;
