@@ -1,4 +1,7 @@
-package testing;
+package testing.cart;
+
+import testing.Meal;
+import testing.order.Order;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +29,7 @@ public class Cart {
             order.addMealToOrder(meal);
             addOrderToCart(order);
         }
-        System.out.println("Cart size: " + orders.size());
+        System.out.println("testing.cart.Cart size: " + orders.size());
         clearCart();
     }
 }

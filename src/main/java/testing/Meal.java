@@ -8,6 +8,9 @@ public class Meal {
     private String name;
     private int quantity;
 
+    public Meal() {
+    }
+
     public Meal(int price) {
         this.price = price;
     }
@@ -62,9 +65,13 @@ public class Meal {
 
     @Override
     public String toString() {
-        return "Meal{" +
+        return "testing.Meal{" +
                 "price=" + price +
                 ", name='" + name + '\'' +
                 '}';
+    }
+
+    int sumPrice() {
+        return getPrice() * getQuantity();
     }
 }

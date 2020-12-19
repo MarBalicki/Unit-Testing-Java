@@ -10,6 +10,10 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
+import org.mockito.Spy;
+import org.mockito.junit.jupiter.MockitoExtension;
+import testing.extensions.IAExceptionIgnoreExtension;
+import testing.order.Order;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -21,8 +25,14 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.DynamicTest.dynamicTest;
+import static org.mockito.BDDMockito.given;
+import static org.mockito.BDDMockito.then;
+import static org.mockito.Mockito.mock;
 
 class MealTest {
+
+    @Spy
+    private Meal mealSpy;
 
     @Test
     void shouldDiscountedPrice() {
@@ -135,6 +145,40 @@ class MealTest {
         return dynamicTests;
     }
 
+    //nie powinno się wywoływać prawdziwych metod na mocku
+    @Test
+    void testMealSumPrice() {
+        //given
+        Meal meal = mock(Meal.class);
+
+        given(meal.getPrice()).willReturn(15);
+        given(meal.getQuantity()).willReturn(3);
+        given(meal.sumPrice()).willCallRealMethod();
+
+        //when
+        int result = meal.sumPrice();
+        //then
+        assertThat(result, equalTo(45));
+    }
+
+    @ExtendWith(MockitoExtension.class)
+    @Test
+    void withSpy() {
+        //given
+//        Meal meal = new Meal("Burrito", 14, 2);
+//        Meal mealSpy = spy(meal);
+//        Meal mealSpy = spy(Meal.class);
+
+        given(mealSpy.getPrice()).willReturn(15);
+        given(mealSpy.getQuantity()).willReturn(3);
+
+        //when
+        int result = mealSpy.sumPrice();
+        //then
+        then(mealSpy).should().getPrice();
+        then(mealSpy).should().getQuantity();
+        assertThat(result, equalTo(45));
+    }
 
 
 }

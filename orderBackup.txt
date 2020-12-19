@@ -1,1 +1,1 @@
-New order: Order{meals=[Meal{price=7, name='fries'}]} back up.
+New testing.order: Order{meals=[testing.Meal{price=7, name='fries'}]} back up.

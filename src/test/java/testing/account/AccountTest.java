@@ -1,4 +1,4 @@
-package testing;
+package testing.account;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;

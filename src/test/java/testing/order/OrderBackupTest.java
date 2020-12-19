@@ -1,6 +1,7 @@
-package testing;
+package testing.order;
 
 import org.junit.jupiter.api.*;
+import testing.Meal;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -17,14 +18,14 @@ class OrderBackupTest {
 
     @BeforeEach
     void appendTheStartOfTheLine() throws IOException {
-        orderBackup.getWriter().append("New order: ");
+        orderBackup.getWriter().append("New testing.order: ");
     }
 
     @Tag("fries")
     @Test
     void backupOrderWithOneMeal() throws IOException {
         Meal meal = new Meal(7, "fries");
-        Order order = new Order();
+        testing.order.Order order = new Order();
         order.addMealToOrder(meal);
         orderBackup.backupOrder(order);
         System.out.println("Order: " + order.toString() + " backed up.");

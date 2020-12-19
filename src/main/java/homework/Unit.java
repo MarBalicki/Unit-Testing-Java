@@ -74,6 +74,10 @@ public class Unit {
     }
 
     public List<Cargo> getCargo() {
-        return cargo;
+        return this.cargo;
+    }
+
+    public Coordinates getCoordinates() {
+        return coordinates;
     }
 }
